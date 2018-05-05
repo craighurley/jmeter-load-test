@@ -1,3 +1,4 @@
+*.hprof
 *.log
 out/*
 reports/*
