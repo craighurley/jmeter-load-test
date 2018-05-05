@@ -16,7 +16,19 @@ Optionally, generate a report dashboard after the load test completes:
 jmeter -nt main.jmx -q main.properties -fl out/report.csv -eo reports/$(date +%s)
 ```
 
-## Configuring jmeter
+For more resource intensive testing, consider tweaking the JVM arguments used by jmeter.  For example, _prepend_ the following string to the commands above (after determining an appropriate memory allocation):
+
+```sh
+JVM_ARGS="-Xms4096m -Xmx4096m -server"
+```
+
+e.g.
+
+```sh
+JVM_ARGS="-Xms4096m -Xmx4096m -server" jmeter -nt main.jmx -q main.properties -fl out/report.csv -eo reports/$(date +%s)
+```
+
+## Run jmeter (in edit mode)
 
 Populate `main.properties`, then run jmeter in GUI mode:
 
@@ -37,3 +49,7 @@ _Note: the default granularity is 60s which effects some graphs; this can be cha
 ```ini
 jmeter.reportgenerator.overall_granularity=1000
 ```
+
+## Links
+
+- <https://jmeter.apache.org/>
