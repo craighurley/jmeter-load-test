@@ -50,6 +50,43 @@ _Note: the default granularity is 60s which effects some graphs; this can be cha
 jmeter.reportgenerator.overall_granularity=1000
 ```
 
+## ulimits
+
+When running larger tests, update the limits file (`/etc/security/limits.conf`) to include the following and then restart the server:
+
+```ini
+* soft nofile 16384
+* hard nofile 16384
+```
+
+## Jmeter logging
+
+Consider reducing the jmeter logs by editing `bin/log4j2.xml`.
+
+### Decrease default log verbosity
+
+Change the default log level to `warn` by changing this:
+
+```xml
+<Root level="info">
+```
+
+to this:
+
+```xml
+<Root level="warn">
+```
+
+### Increase specific loggers verbosity
+
+Then set specific loggers to `info`, for example:
+
+```xml
+<Logger name="org.apache.jmeter.JMeter" level="info" />
+<Logger name="org.apache.jmeter.threads.ThreadGroup" level="info" />
+<Logger name="org.apache.jmeter.reporters.Summariser" level="info" />
+```
+
 ## Links
 
 - <https://jmeter.apache.org/>
