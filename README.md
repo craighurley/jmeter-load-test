@@ -28,6 +28,12 @@ e.g.
 JVM_ARGS="-Xms4096m -Xmx4096m -server" jmeter -nt main.jmx -q main.properties -fl out/report.csv -eo reports/$(date +%s)
 ```
 
+Likewise, if you are developing your project using a server with limited resources, consider lowering those values, e.g:
+
+```sh
+JVM_ARGS="-Xms512m -Xmx512m -server"
+```
+
 ## Run jmeter (in edit mode)
 
 Populate `main.properties`, then run jmeter in GUI mode:
